@@ -1,0 +1,33 @@
+package BOJ;
+
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		int x, y, w, h;
+		int result = 1000;
+		
+		x = Integer.parseInt(input.next());
+		y = Integer.parseInt(input.next());
+		w = Integer.parseInt(input.next());
+		h = Integer.parseInt(input.next());
+		
+		if(w - x < result)
+			result = w - x;
+		
+		if(x < result)
+			result = x;
+		
+		if(h - y < result)
+			result = h - y;
+		
+		if(y < result)
+			result = y;
+		
+		System.out.print(result);
+	}
+
+}

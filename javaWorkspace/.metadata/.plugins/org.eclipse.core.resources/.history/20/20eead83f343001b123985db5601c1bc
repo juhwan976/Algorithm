@@ -1,0 +1,39 @@
+package BOJ;
+
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		int num = Integer.parseInt(input.next());
+		String str[] = new String[num];
+		String align1[] = new String[num];
+		String align2[] = new String[num];
+		String temp;
+		
+		// 입력 
+		for(int i = 0 ; i < num ; i++ ) {
+			str[i] = input.next();
+		}
+		
+		// 단어의 길이로 정렬 
+		for(int i = 0 ; i < num ; i++) {
+			for(int j = i ; j < num ; j++) {
+				if(str[i].length() > str[j].length()) {
+					temp = str[i];
+					str[i] = str[j];
+					str[j] = temp;
+				}
+			}
+		}
+		
+		for(int i = 0 ; i < num ; i++ ) {
+			System.out.print(str[i].length() + " ");
+		}
+		
+		
+	}
+
+}
