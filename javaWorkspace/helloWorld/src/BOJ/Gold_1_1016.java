@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Gold_1_1016 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        long mini = Long.parseLong(input.next());
-        long maxi = Long.parseLong(input.next());
+        long mini = input.nextLong();
+        long maxi = input.nextLong();
         long result = maxi - mini + 1;
         long sqrNum = 0;
         boolean flag = false;
@@ -24,16 +24,14 @@ public class Gold_1_1016 {
                             break;
                         }
                     }
-
                     if(!flag) {
                         result--;
-                    }
-                    
+                    }  
                     flag = false;
                 }
             }
         }
-
         System.out.println(result);
+        input.close();
     }
 }

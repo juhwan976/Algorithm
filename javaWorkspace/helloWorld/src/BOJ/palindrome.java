@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class palindrome {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
 		String str;
 		boolean isPalindrome = false;
@@ -31,6 +30,7 @@ public class palindrome {
 				System.out.println("no");
 			
 		}
+		input.close();
 		
 	}
 

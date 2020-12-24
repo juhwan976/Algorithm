@@ -42,5 +42,6 @@ public class Silver_3_1817 {
         }
 
         System.out.println(boxNum);
+        input.close();
     }
 }

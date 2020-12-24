@@ -27,5 +27,7 @@ public class Silver_5_2609 {
 
         System.out.println(max);
         System.out.println(min);
+
+        input.close();
     }
 }

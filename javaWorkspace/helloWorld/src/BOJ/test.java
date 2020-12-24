@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
 		int num = Integer.parseInt(input.next());
 		int sameNum = 0;
@@ -74,7 +73,7 @@ public class test {
 				System.out.println(str[i]);
 		}
 		
-		
+		input.close();
 		
 	}
 

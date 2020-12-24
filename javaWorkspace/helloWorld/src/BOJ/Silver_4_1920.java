@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Silver_4_1920 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
 		int inputLength = Integer.parseInt(input.next());
 		int inputArr[] = new int[inputLength];
@@ -33,6 +32,7 @@ public class Silver_4_1920 {
 			
 			System.out.println(resultArr[i]);
 		}
+		input.close();
 	}
 
 }

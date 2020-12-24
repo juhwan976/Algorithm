@@ -24,5 +24,6 @@ public class Silver_4_1978 {
         }
 
         System.out.println(result);
+        input.close();
     }
 }
