@@ -14,30 +14,29 @@ public class Platinum_5_1572 {
         String data[] = input.readLine().split(" ");
         int arrLength = Integer.parseInt(data[0]);
         int partLength = Integer.parseInt(data[1]);
-        long result = 0;
-        int count = 0;
-
-        int arr[] = new int[arrLength];
+        int num[] = new int[arrLength];
         temp = new int[arrLength];
+        long result = 0;
 
-        for (int i = 0; i < arrLength; i++) {
-            arr[i] = Integer.parseInt(input.readLine());
+        for(int i = 0 ; i < arrLength ; i++) {
+            num[i] = Integer.parseInt(input.readLine());
         }
 
-        divide(arr, 0, arrLength - 1);
+        divide(num, 0, num.length - 1);
 
-        for(int i = ((partLength - 1) / 2) ; (i - ((partLength - 1) / 2)) != (arrLength - partLength + 1) ; i++) {
-            result += arr[i];
-            count++;
+        int base = (partLength - 1) / 2;
+
+        for(int i = 0 ; i < (arrLength - partLength + 1) ; i++) {
+            result += num[i + base];
         }
-
-        output.write(Long.toString(result) + " " + count);
+        
+        output.write(Long.toString(result));
 
         input.close();
         output.flush();
         output.close();
     }
-
+    
     public static void divide(int arr[], int left, int right) {
         if (left == right)
             return;
