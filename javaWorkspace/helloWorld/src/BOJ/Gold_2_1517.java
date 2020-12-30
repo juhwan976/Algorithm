@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class Gold2_1517 {
+public class Gold_2_1517 {
     static long result = 0;
     static int temp[];
     public static void main(String[] arge) throws IOException {
