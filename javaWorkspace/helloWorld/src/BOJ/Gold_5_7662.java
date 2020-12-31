@@ -36,27 +36,25 @@ public class Gold_5_7662 {
                     numcount++;
                 } else if (data[0].equals("D")) {
                     if (numcount == 0) {
+                        /* do nothing */
                     } else {
                         if (Integer.parseInt(data[1]) == 1) {
                             while (true) {
                                 Pair pair = maxqueue.remove();
                                 if (visited[pair.index]) {
                                     /* do nothing */
-                                }
-                                else {
+                                } else {
                                     visited[pair.index] = true;
                                     maxcount++;
                                     break;
                                 }
                             }
-                        }
-                        else if(Integer.parseInt(data[1]) == -1) {
-                            while(true) {
+                        } else if (Integer.parseInt(data[1]) == -1) {
+                            while (true) {
                                 Pair pair = minqueue.remove();
-                                if(visited[pair.index]) {
+                                if (visited[pair.index]) {
                                     /* do nothing */
-                                }
-                                else {
+                                } else {
                                     visited[pair.index] = true;
                                     mincount++;
                                     break;
@@ -64,7 +62,7 @@ public class Gold_5_7662 {
                             }
                         }
 
-                        if(mincount + maxcount == numcount) {
+                        if (mincount + maxcount == numcount) {
                             minqueue.clear();
                             maxqueue.clear();
                             numcount = 0;
@@ -75,26 +73,27 @@ public class Gold_5_7662 {
                 }
             }
 
-            if(numcount == 0) {
-                output.write("EMPTY");
-            }
-            else {
+            if (numcount == 0) {
+                output.write("EMPTY\n");
+            } else {
                 Pair min;
                 Pair max;
-                while(true) {
+                while (true) {
                     min = minqueue.remove();
-                    if(!visited[min.index]) break;
+                    if (!visited[min.index])
+                        break;
                 }
-                while(true) {
+                while (true) {
                     max = maxqueue.remove();
-                    if(!visited[max.index]) break;
+                    if (!visited[max.index])
+                        break;
                 }
 
-                output.write(max.value + " " + min.value);
+                output.write(max.value + " " + min.value + "\n");
+                output.flush();
             }
         }
 
-        output.flush();
         output.close();
         input.close();
     }
