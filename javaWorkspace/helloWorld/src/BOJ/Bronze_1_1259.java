@@ -2,7 +2,7 @@ package BOJ;
 
 import java.util.Scanner;
 
-public class palindrome {
+public class Bronze_1_1259 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);

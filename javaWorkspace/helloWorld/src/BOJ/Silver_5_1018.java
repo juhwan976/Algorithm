@@ -2,7 +2,7 @@ package BOJ;
 
 import java.util.Scanner;
 
-public class repaintChessBoard {
+public class Silver_5_1018 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
