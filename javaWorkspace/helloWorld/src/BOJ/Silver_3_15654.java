@@ -1,21 +1,41 @@
-package test;
+package BOJ;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.PriorityQueue;
 
-public class Permutation_test {
+public class Silver_3_15654 {
     private static final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-    // private static int numlength;
-    // private static int selectNum;
+    private static int numlength;
+    private static int selectNum;
     private static int nums[];
     private static int result[];
     private static boolean visited[];
-    
+
     public static void main(String[] args) throws IOException {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        String data1[] = input.readLine().split(" ");
+        numlength = Integer.parseInt(data1[0]);
+        selectNum = Integer.parseInt(data1[1]);
+        nums = new int[numlength];
+        visited = new boolean[numlength];
+        result = new int[numlength];
+
+        String data2[] = input.readLine().split(" ");
+        for (int i = 0; i < numlength; i++) {
+            pq.add(Integer.parseInt(data2[i]));
+        }
+
+        for (int i = 0; i < numlength; i++) {
+            nums[i] = pq.remove();
+        }
+
+        permutation(numlength, selectNum, 0);
 
         output.flush();
         output.close();

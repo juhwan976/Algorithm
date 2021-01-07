@@ -16,6 +16,8 @@ public class Combination_test {
         for(int i = 1 ; i <= num/2 ; i++) {
             combination(arr, visited, 0, num, i);
         }
+
+        input.close();
     }
 
     public static void combination(int arr[], boolean visited[], int depth, int n, int r) {
