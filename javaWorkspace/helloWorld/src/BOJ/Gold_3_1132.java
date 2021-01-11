@@ -9,7 +9,7 @@ import java.io.OutputStreamWriter;
 public class Gold_3_1132 {
     private static final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-    private static int weight[] = new int[10];
+    private static long weight[] = new long[10];
     private static int match[] = new int[10];
     private static int first[] = new int[10];
     private static boolean visited[] = new boolean[10];
@@ -69,7 +69,7 @@ public class Gold_3_1132 {
                     first[target]++;
                 }
 
-                weight[target] += vip;
+                weight[target] += Math.pow(10,  vip);
             }
         }
 
@@ -81,26 +81,39 @@ public class Gold_3_1132 {
         }
 
         if (true) {
-            int maxvalue = 9;
+            int value = 9;
 
-            while (maxvalue >= 0) {
-                int max = 0;
+            while (value >= 1) {
+                long min = 50 * (long) Math.pow(10,12);
+                long max = 0;
+                int minIndex = 0;
                 int maxIndex = 0;
-                int maxFirst = 0;
 
                 for (int i = 0; i < weight.length; i++) {
-                    if (weight[i] > max && !visited[i] && maxFirst <= first[i]) {
-                        max = weight[i];
-                        maxIndex = i;
+                    // 0이 결정되지 않았을 경우
+                    if(!flag) {
+                        if(first[i] == 0 && weight[i] <= min && !visited[i]) {
+                            minIndex = i;
+                            min = weight[i];
+                        }
+                    }
+                    // 결정되었을 경우
+                    else {
+                        if(weight[i] >= max && !visited[i]) {
+                            maxIndex = i;
+                            max = weight[i];
+                        }
                     }
                 }
 
-                if (!visited[maxIndex]) {
-                    match[maxIndex] = maxvalue--;
-                    visited[maxIndex] = true;
+                if(!flag) {
+                    flag = true;
+                    match[minIndex] = 0;
+                    visited[minIndex] = true;
                 }
                 else {
-                    maxvalue--;
+                    match[maxIndex] = value--;
+                    visited[maxIndex] = true;
                 }
             }
 
@@ -151,10 +164,6 @@ public class Gold_3_1132 {
         }
 
         output.write(result +"\n");
-
-        for(int i = 0 ; i < match.length ; i++) {
-            output.write(match[i] + " ");
-        }
 
         output.flush();
         output.close();
