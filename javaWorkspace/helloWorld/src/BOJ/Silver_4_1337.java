@@ -12,12 +12,10 @@ public class Silver_4_1337 {
     private static int length;
     private static int arr[];
     private static int temp[];
-    private static int fill[];
     public static void main(String[] args) throws IOException {
         length = Integer.parseInt(input.readLine());
         arr = new int[length];
         temp = new int[length];
-        fill = new int[length];
 
         for(int i = 0 ; i < length ; i++) {
             arr[i] = Integer.parseInt(input.readLine());
