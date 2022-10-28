@@ -1,5 +1,6 @@
 package BOJ;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Silver_4_1920 {
@@ -13,27 +14,33 @@ public class Silver_4_1920 {
 			inputArr[i] = Integer.parseInt(input.next());
 		}
 
-		int compareLength = Integer.parseInt(input.next());
-		int compareArr[] = new int[compareLength];
-		// int resultArr[] = new int[compareLength];
+		Arrays.sort(inputArr);
 
-		for (int i = 0; i < compareLength; i++) {
-			compareArr[i] = Integer.parseInt(input.next());
-			/*
-			 * for(int j = 0 ; j < inputLength ; j++) {
-			 * if(compareArr[i] == inputArr[j]) {
-			 * resultArr[i] = 1;
-			 * break;
-			 * }
-			 * else {
-			 * resultArr[i] = 0;
-			 * }
-			 * }
-			 * 
-			 * System.out.println(resultArr[i]);
-			 */
+		int targetLength = Integer.parseInt(input.next());
+		int currentEndIndex = inputLength - 1;
+		int currentStartIndex = 0;
+
+		for (int i = 0; i < targetLength; i++) {
+			int targetNum = Integer.parseInt(input.next());
+			System.out.println(findNum(inputArr, currentStartIndex, currentEndIndex, targetNum));
 		}
+
 		input.close();
 	}
 
+	public static int findNum(int[] nums, int startIndex, int endIndex, int targetNum) {
+		int mid = (startIndex + endIndex) / 2;
+
+		if (startIndex <= endIndex) {
+			if (nums[mid] == targetNum) {
+				return 1;
+			} else if (nums[mid] > targetNum) {
+				return findNum(nums, startIndex, mid - 1, targetNum);
+			} else {
+				return findNum(nums, mid + 1, endIndex, targetNum);
+			}
+		} else {
+			return 0;
+		}
+	}
 }
