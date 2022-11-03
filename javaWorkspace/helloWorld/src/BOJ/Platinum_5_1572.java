@@ -29,14 +29,14 @@ public class Platinum_5_1572 {
         for(int i = 0 ; i < (arrLength - partLength + 1) ; i++) {
             result += num[i + base];
         }
-        
+
         output.write(Long.toString(result));
 
         input.close();
         output.flush();
         output.close();
     }
-    
+
     public static void divide(int arr[], int left, int right) {
         if (left == right)
             return;
