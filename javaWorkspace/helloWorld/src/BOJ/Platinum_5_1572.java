@@ -5,72 +5,56 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Platinum_5_1572 {
     static int temp[];
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
-        String data[] = input.readLine().split(" ");
-        int arrLength = Integer.parseInt(data[0]);
-        int partLength = Integer.parseInt(data[1]);
-        int num[] = new int[arrLength];
-        temp = new int[arrLength];
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        String temp = input.readLine();
+
+        int arrSize = Integer.parseInt(temp.split(" ")[0]);
+        int windowSize = Integer.parseInt(temp.split(" ")[1]);
+        int tempNum;
+        int removeNum;
+        boolean isFirst = true;
+
         long result = 0;
 
-        for(int i = 0 ; i < arrLength ; i++) {
-            num[i] = Integer.parseInt(input.readLine());
+        for(int i = 0 ; i < arrSize ; i++) {
+            tempNum = Integer.parseInt(input.readLine());
+
+            if(queue.size() < windowSize) {
+                queue.add(tempNum);
+            }
+            else if(queue.size() == windowSize && isFirst) {
+                isFirst = false;
+                // 정렬
+
+                // 중앙 값 찾기
+                // 1 ~ N 의 배열애서 (N + 1) / 2 번째의 수
+
+                // result에 중앙값 더하기
+            }
+            else {
+                removeNum = queue.poll();
+                queue.add(tempNum);
+
+                // 이분 탐색으로 해당 수 끼워넣기
+
+                // 중앙 값 찾기
+                // 1 ~ N 의 배열에서 (N + 1) / 2 번째의 수
+
+                // result에 중앙값 더하기
+            }
         }
-
-        divide(num, 0, num.length - 1);
-
-        int base = (partLength - 1) / 2;
-
-        for(int i = 0 ; i < (arrLength - partLength + 1) ; i++) {
-            result += num[i + base];
-        }
-
-        output.write(Long.toString(result));
 
         input.close();
-        output.flush();
         output.close();
-    }
-
-    public static void divide(int arr[], int left, int right) {
-        if (left == right)
-            return;
-
-        int mid = (right + left) / 2;
-
-        divide(arr, left, mid);
-        divide(arr, mid + 1, right);
-        merge(arr, left, right);
-    }
-
-    public static void merge(int arr[], int left, int right) {
-        int mid = (right + left) / 2;
-        int L = left;
-        int R = mid + 1;
-        int index = left;
-
-        while(L <= mid && R <= right) {
-            temp[index++] = (arr[L] > arr[R])? arr[R++] : arr[L++];
-        }
-
-        if(L > mid) {
-            for(int i = R ; i <= right ; i++) {
-                temp[index++] = arr[i];
-            }
-        }
-        else {
-            for(int i = L ; i <= mid ; i++) {
-                temp[index++] = arr[i];
-            }
-        }
-
-        for(int i = left ; i <= right ; i++) {
-            arr[i] = temp[i];
-        }
     }
 }
