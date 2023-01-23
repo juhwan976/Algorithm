@@ -17,84 +17,73 @@ public class Silver_4_25955 {
     int arrLength = Integer.parseInt(temp);
 
     String[] arr = new String[arrLength];
+    String[] sorted = new String[arrLength];
 
     temp = input.readLine();
 
     for(int i = 0 ; i < arrLength ; i++) {
       arr[i] = temp.split(" ")[i];
+      sorted[i] = temp.split(" ")[i];
     }
 
-    boolean start = false;
-    Integer startIndex = null;
-    boolean end = false;
-    Integer endIndex = null;
-
-    for(int i = 1 ; i < arrLength ; i++) {
-      if(arr[i - 1].charAt(0) == arr[i].charAt(0)) {
-        if(Integer.parseInt(arr[i - 1].substring(1)) < Integer.parseInt(arr[i].substring(1))) {
-          if(!start) {
-            start = true;
-            startIndex = i - 1;
+    for(int i = 0 ; i < arrLength - 1 ; i++) {
+      for(int k = i + 1 ; k < arrLength ; k++) {
+        if(sorted[i].charAt(0) == sorted[k].charAt(0)) {
+          if(Integer.parseInt(sorted[i].substring(1)) < Integer.parseInt(sorted[k].substring(1))) {
+            String tempString = sorted[i];
+            sorted[i] = sorted[k];
+            sorted[k] = tempString;
           }
-          else {
-            end = true;
-            endIndex = i;
-          }
-        }
-      }
-      else {
-        if(compareRank(arr[i - 1].charAt(0), arr[i].charAt(0))) {
-
         }
         else {
-          if(!start) {
-            start = true;
-            startIndex = i - 1;
+          int c1Index = 0;
+          int c2Index = 0;
+
+          for(int j = 0 ; j < ranks.length ; j++) {
+            if(ranks[j] == sorted[i].charAt(0)) {
+              c1Index = j;
+            }
+
+            if(ranks[j] == sorted[k].charAt(0)) {
+              c2Index = j;
+            }
           }
-          else {
-            end = true;
-            endIndex = i;
+
+          if(c2Index < c1Index) {
+            String tempString = sorted[i];
+            sorted[i] = sorted[k];
+            sorted[k] = tempString;
           }
         }
       }
     }
 
-    if(startIndex == null) {
+    Integer firstIndex = null;
+    Integer secondIndex = null;
+
+    for(int i = 0 ; i < arrLength ; i++) {
+      if(!(arr[i].equals(sorted[i]))) {
+        if(firstIndex == null) {
+          firstIndex = i;
+        }
+        else {
+          secondIndex = i;
+        }
+      }
+    }
+
+    // output.write("\n");
+
+    if(firstIndex == null) {
       output.write("OK");
     }
     else {
       output.write("KO\n");
-      if(endIndex == null){
-        endIndex = 1;
-      }
-      output.write(arr[endIndex] + " " + arr[startIndex]);
+      output.write(sorted[firstIndex] + " " + sorted[secondIndex]);
     }
-
     output.flush();
 
     output.close();
     input.close();
-  }
-
-  public static boolean compareRank(char c1, char c2) {
-    int c1Index = 0;
-    int c2Index = 0;
-
-    for(int i = 0 ; i < ranks.length ; i++) {
-      if(ranks[i] == c1) {
-        c1Index = i;
-      }
-
-      if(ranks[i] == c2) {
-        c2Index = i;
-      }
-    }
-
-    if(c1Index <= c2Index) {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 }
